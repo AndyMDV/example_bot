@@ -1,0 +1,22 @@
+{
+  "name": "proyectomigracion",
+  "version": "1.0.0",
+  "description": "No modifique esto.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js"
+  },
+  "keywords": ["Discord_bot", "Discord.js", "Bot", "example_bot"],
+  "author": "ムmercugmesofcᶮʰᵏ#2574",
+  "license": "MIT",
+  "engines": {
+    "node": "17.3.0"
+  },
+  "dependencies": {
+    "@discordjs/builders": "^0.12.0",
+    "@discordjs/rest": "^0.3.0",
+    "discord-api-types": "^0.31.1",
+    "discord.js": "^13.6.0",
+    "nodemon": "^2.0.15"
+  }
+}
