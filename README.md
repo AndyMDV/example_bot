@@ -2,5 +2,5 @@
 Este es un bot de ejemplo
 
 Al descargar el archivo por favor ejecutar el comando npm 
->npm install <br>
+<strong>npm install</strong>
 para poder instalar las dependencias que estan el archivo package.json
