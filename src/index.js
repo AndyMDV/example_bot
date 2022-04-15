@@ -1,5 +1,5 @@
 const { Client, Intents, Collection } = require('discord.js');
-const { bot_token } = require('./data/index');
+const data = require('./data/index');
 const fs = require('node:fs');
 
 const client = new Client({
@@ -24,4 +24,4 @@ client.categories = fs.readdirSync("./src/commands/");
     require(`./handler/${handler}`)(client);
 });
 
-client.login(bot_token);
+client.login(data.bot_token);

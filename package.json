@@ -6,7 +6,12 @@
   "scripts": {
     "start": "nodemon ./src/index.js"
   },
-  "keywords": ["Discord_bot", "Discord.js", "Bot", "example_bot"],
+  "keywords": [
+    "Discord_bot",
+    "Discord.js",
+    "Bot",
+    "example_bot"
+  ],
   "author": "ムmercugmesofcᶮʰᵏ#2574",
   "license": "MIT",
   "engines": {
@@ -15,6 +20,8 @@
   "dependencies": {
     "@discordjs/builders": "^0.12.0",
     "@discordjs/rest": "^0.3.0",
+    "axios": "^0.26.1",
+    "common-tags": "^1.8.2",
     "discord-api-types": "^0.31.1",
     "discord.js": "^13.6.0",
     "nodemon": "^2.0.15"
