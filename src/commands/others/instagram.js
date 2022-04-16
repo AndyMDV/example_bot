@@ -1,15 +1,16 @@
-const { Client, CommandInteraction } = require('discord.js');
-const axios = require('axios');
+const { Client, CommandInteraction, MessageEmbed } = require('discord.js');
+const axios = require('axios').default;
 
 module.exports = {
     name: 'instagram',
     description: 'Comando instagram',
+    category: 'others',
     options: [
         {
             name: 'username',
             description: 'Please type the username',
             type: 3,
-            required: true,
+            required: true,//innecesario porque esta esto
         }
     ],
     /**
@@ -18,63 +19,46 @@ module.exports = {
      * @param {CommandInteraction} interaction 
      */
     run: async (client, interaction) => {
-        const username = interaction.options.getString('username');
+        const args = interaction.options.getString('username');
 
-        if (!username) return void interaction.reply({
-            embeds: [
-                {
-                    title: 'Maybe it`s useful to actually search for someone...!',
-                    color: 'RED',
-                    footer: {
-                        text: `Request by: ${interaction.user.username}`,
-                        iconURL: interaction.user.avatarURL(),
-                    }
-                }
-            ]
-        });
-
-        let url_search, response, account, details;
-        let emote_verify = `<a:verified:727820439497211994>`;
+        let url; 
+        let response; 
+        let account; 
+        let details;
 
         try {
-            url_search = `https://instagram.com/${username}/?__a=1`;
-            response = await axios.get(url_search);
+            url = `https://www.instagram.com/${args}/?__a=1`;//https://www.instagram.com/donalberto98/
+            response = await axios.get(url);
             account = response.data;
             details = account.graphql.user;
-        } catch {
-            return void interaction.reply({
-                embeds: [
-                    {
-                        title: `I cant find this account`
-                    }
-                ]
-            });
+        } catch (error) {
+            return interaction.reply({ content: 'I cant find this account' });
         }
 
         return void interaction.reply({
             embeds: [
                 {
-                    title: `${details.is_verified ? `${details.username} ${emote_verify}` : ` ${details.username}`} ${details.is_private ? '🔒' : ''} `,
-                    description: details.biography? `Bio:\n${details.biography}` : 'This account does not have a bio',
+                    title: `${details.is_verified ? `${details.username} <a:verified:727820439497211994>` : ` ${details.username}`} ${details.is_private ? '🔒' : ''} `,
+                    description: details.biography,
                     thumbnail: details.profile_pic_url,
+                    color: 'WHITE',
                     fields: [
                         {
-                            name: `Total post`,
+                            name: 'Total Posts:',
                             value: details.edge_owner_to_timeline_media.count.toLocaleString(),
                             inline: true,
                         },
                         {
-                            name: 'Followers',
+                            name: 'Followers:',
                             value: details.edge_followed_by.count.toLocaleString(),
                             inline: true,
                         },
                         {
-                            name: 'Following',
+                            name: 'Following:',
                             value: details.edge_follow.count.toLocaleString(),
-                            inline: true
-                        }
-                    ],
-                    color: 'WHITE'
+                            inline: true,
+                        },
+                    ]
                 }
             ]
         })

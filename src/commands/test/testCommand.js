@@ -10,6 +10,6 @@ module.exports = {
      * @param {CommandInteraction} interaction 
      */
     run: async (client, interaction) => {
-        interaction.channel.send(`Test command works`)
+        interaction.reply({ content: `Test command works` })
     }
 }

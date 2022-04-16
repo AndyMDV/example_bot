@@ -4,7 +4,7 @@ const { stripIndents } = require("common-tags/lib");
 module.exports = {
     name: 'help',
     description: 'Bot give you a info message',
-    category: 'Others',
+    category: 'others',
     options: [
         {
             name: 'info',
