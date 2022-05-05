@@ -4,7 +4,7 @@ const { Client } = require('discord.js');
 const { readdirSync } = require('node:fs');
 const {
     bot_token,
-    commandsInteraction, //Aqui usas una variable de reaccion o boleana.. queda de tarea :3
+    commandsInteraction,
     bot_id,
     guild_id
 } = require('../data/index');
