@@ -29,7 +29,7 @@ module.exports = async (client) => {
     });
     const rest = new REST({ version: '9' }).setToken(bot_token);
     if (commandsInteraction) {
-        /*(async () => {
+        (async () => {
             console.log('Started refreshing global application (/) commands.');
             rest.put(
                 Routes.applicationCommands(client_id), {
@@ -38,8 +38,7 @@ module.exports = async (client) => {
             ).then(() => console.log('Successfully reloaded global application (/) commands.')).catch(e => {
                 console.log(`Hubo un error en la publicacion global de los comandos\nError: ${e}`);
             });
-        })();*/
-        console.log('La publicacion global esta desactivada, quitar -> /**/')
+        })();
     } else {
         (async () => {
             console.log('Started refreshing private guild application (/) commands.');
