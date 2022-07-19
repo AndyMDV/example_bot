@@ -1,4 +1,4 @@
-const client = require('..');
+const { client } = require('..');
 
 client.on('messageCreate', async message => {
     const color = message.guild.me.displayHexColor === "#000000" ? "#ffffff" : message.guild.me.displayHexColor;

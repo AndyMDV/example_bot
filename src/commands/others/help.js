@@ -1,5 +1,6 @@
 const { CommandInteraction, Client } = require("discord.js");
 const { stripIndents } = require("common-tags/lib");
+const { commands } = require('../../index');
 
 module.exports = {
     name: 'help',
@@ -46,7 +47,7 @@ module.exports = {
         try {
             const color = interaction.guild.me.displayHexColor === "#000000" ? "#ffffff" : interaction.guild.me.displayHexColor;
             if (interaction.options.getSubcommand() === 'command_info') {
-                const command_get = client.commands.get(interaction.options.getString('command'));
+                const command_get = commands.get(interaction.options.getString('command'));
 
                 if (!command_get) return interaction.reply({
                     embeds: [

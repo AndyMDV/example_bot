@@ -9,25 +9,29 @@ const {
     guild_id
 } = require('../data/index');
 
+const { commands } = require('..')
+
 /**
  * @param {Client} client
  */
 module.exports = async (client) => {
-    //ESTO LEE LOS COMANDOS NO TOCAR
+
     const array_commands = [];
     readdirSync('./src/commands/').forEach(dir => {
         const command_files = readdirSync(`./src/commands/${dir}/`).filter(file => file.endsWith('.js'));
         for (const file of command_files) {
             const command = require(`../commands/${dir}/${file}`);
             if (command.name) {
-                client.commands.set(command.name, command);
+                commands.set(command.name, command)
                 array_commands.push(command);
             } else {
                 continue;
             }
         }
     });
+
     const rest = new REST({ version: '9' }).setToken(bot_token);
+
     if (commandsInteraction) {
         (async () => {
             console.log('Started refreshing global application (/) commands.');
